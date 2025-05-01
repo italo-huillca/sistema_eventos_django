@@ -25,3 +25,13 @@ def detalle_evento(request, evento_id):
     evento = Evento.objects.get(id=evento_id)
     registros = RegistroEvento.objects.filter(evento=evento)
     return render(request, 'eventos/detalle_evento.html', {'evento': evento, 'registros': registros})
+def editar_evento(request, evento_id):
+    evento = Evento.objects.get(id=evento_id)
+    if request.method == 'POST':
+        form = EventoForm(request.POST, instance=evento)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_eventos')
+    else:
+        form = EventoForm(instance=evento)
+    return render(request, 'eventos/editar_evento.html', {'form': form})
