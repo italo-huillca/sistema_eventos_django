@@ -35,3 +35,9 @@ def editar_evento(request, evento_id):
     else:
         form = EventoForm(instance=evento)
     return render(request, 'eventos/editar_evento.html', {'form': form})
+def eliminar_evento(request, evento_id):
+    evento = Evento.objects.get(id=evento_id)
+    if request.method == 'POST':
+        evento.delete()
+        return redirect('lista_eventos')
+    return render(request, 'eventos/eliminar_evento.html', {'evento': evento})
