@@ -17,3 +17,11 @@ def registrar_en_evento(request, evento_id):
         registro, created = RegistroEvento.objects.get_or_create(usuario=request.user, evento=evento)
         return redirect('detalle_evento', evento_id=evento_id)
     return render(request, 'eventos/registrar_en_evento.html', {'evento': evento})
+def lista_eventos(request):
+    eventos = Evento.objects.all()
+    return render(request, 'eventos/lista_eventos.html', {'eventos': eventos})
+
+def detalle_evento(request, evento_id):
+    evento = Evento.objects.get(id=evento_id)
+    registros = RegistroEvento.objects.filter(evento=evento)
+    return render(request, 'eventos/detalle_evento.html', {'evento': evento, 'registros': registros})
