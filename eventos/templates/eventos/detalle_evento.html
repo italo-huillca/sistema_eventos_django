@@ -1,0 +1,14 @@
+<h2>Detalle del Evento: {{ evento.nombre }}</h2>
+<p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+<p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+<p><strong>Lugar:</strong> {{ evento.lugar }}</p>
+<p><strong>Capacidad:</strong> {{ evento.capacidad }}</p>
+
+<h3>Registros</h3>
+<ul>
+    {% for registro in registros %}
+        <li>{{ registro.usuario.username }} - {{ registro.fecha_registro }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'lista_eventos' %}">Volver a la lista</a>
