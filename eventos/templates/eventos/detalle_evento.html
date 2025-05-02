@@ -13,5 +13,11 @@
         {% endfor %}
     </ul>
 
+    <!-- Botón para inscribirse -->
+    <form method="post" action="{% url 'registrar_en_evento' evento.id %}" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Inscribirme</button>
+    </form>
+
     <a href="{% url 'lista_eventos' %}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Volver a la lista</a>
 </div>

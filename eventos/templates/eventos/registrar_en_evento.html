@@ -1,0 +1,11 @@
+<!-- filepath: /home/xdork/dev/djangoprojects/sistema_eventos_django/eventos/templates/eventos/registrar_en_evento.html -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<div class="bg-gray-900 text-white min-h-screen p-6">
+    <h2 class="text-2xl font-bold mb-4">Registrar en Evento</h2>
+    <p>¿Deseas inscribirte en el evento "<span class="font-semibold">{{ evento.nombre }}</span>"?</p>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Inscribirme</button>
+    </form>
+    <a href="{% url 'detalle_evento' evento.id %}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cancelar</a>
+</div>
