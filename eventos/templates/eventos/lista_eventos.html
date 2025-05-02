@@ -1,11 +1,16 @@
-<h2>Lista de Eventos</h2>
-<a href="{% url 'crear_evento' %}">Crear Nuevo Evento</a>
-<ul>
-    {% for evento in eventos %}
-        <li>
-            <a href="{% url 'detalle_evento' evento.id %}">{{ evento.nombre }}</a>
-            <a href="{% url 'editar_evento' evento.id %}">Editar</a>
-            <a href="{% url 'eliminar_evento' evento.id %}">Eliminar</a>
-        </li>
-    {% endfor %}
-</ul>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<div class="bg-gray-900 text-white min-h-screen p-6">
+    <h2 class="text-2xl font-bold mb-4">Lista de Eventos</h2>
+    <a href="{% url 'crear_evento' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-block">Crear Nuevo Evento</a>
+    <ul class="space-y-4">
+        {% for evento in eventos %}
+            <li class="bg-gray-800 p-4 rounded shadow">
+                <a href="{% url 'detalle_evento' evento.id %}" class="text-blue-400 hover:underline font-semibold">{{ evento.nombre }}</a>
+                <div class="mt-2">
+                    <a href="{% url 'editar_evento' evento.id %}" class="text-yellow-400 hover:underline mr-4">Editar</a>
+                    <a href="{% url 'eliminar_evento' evento.id %}" class="text-red-400 hover:underline">Eliminar</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

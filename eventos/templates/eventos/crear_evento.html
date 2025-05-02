@@ -1,7 +1,10 @@
-<h2>Crear Evento</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Crear</button>
-</form>
-<a href="{% url 'lista_eventos' %}">Volver</a>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<div class="bg-gray-900 text-white min-h-screen p-6">
+    <h2 class="text-2xl font-bold mb-4">Crear Evento</h2>
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Crear</button>
+    </form>
+    <a href="{% url 'lista_eventos' %}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Volver</a>
+</div>

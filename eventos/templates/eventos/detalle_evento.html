@@ -1,14 +1,17 @@
-<h2>Detalle del Evento: {{ evento.nombre }}</h2>
-<p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
-<p><strong>Fecha:</strong> {{ evento.fecha }}</p>
-<p><strong>Lugar:</strong> {{ evento.lugar }}</p>
-<p><strong>Capacidad:</strong> {{ evento.capacidad }}</p>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<div class="bg-gray-900 text-white min-h-screen p-6">
+    <h2 class="text-2xl font-bold mb-4">Detalle del Evento: {{ evento.nombre }}</h2>
+    <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+    <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+    <p><strong>Lugar:</strong> {{ evento.lugar }}</p>
+    <p><strong>Capacidad:</strong> {{ evento.capacidad }}</p>
 
-<h3>Registros</h3>
-<ul>
-    {% for registro in registros %}
-        <li>{{ registro.usuario.username }} - {{ registro.fecha_registro }}</li>
-    {% endfor %}
-</ul>
+    <h3 class="text-xl font-semibold mt-6">Registros</h3>
+    <ul class="space-y-2">
+        {% for registro in registros %}
+            <li class="bg-gray-800 p-2 rounded shadow">{{ registro.usuario.username }} - {{ registro.fecha_registro }}</li>
+        {% endfor %}
+    </ul>
 
-<a href="{% url 'lista_eventos' %}">Volver a la lista</a>
+    <a href="{% url 'lista_eventos' %}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Volver a la lista</a>
+</div>
