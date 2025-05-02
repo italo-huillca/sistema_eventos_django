@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 class Evento(models.Model):
     nombre = models.CharField(max_length=200)
@@ -7,6 +8,12 @@ class Evento(models.Model):
     fecha = models.DateTimeField()
     lugar = models.CharField(max_length=200)
     capacidad = models.PositiveIntegerField()
+    organizador = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='eventos_organizados',
+        default=1  # Reemplaza con el ID de un usuario válido
+    )
 
     def __str__(self):
         return self.nombre
